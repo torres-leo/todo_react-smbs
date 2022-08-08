@@ -7,14 +7,14 @@ function App() {
 
 	useEffect(() => {
 		const getLocalStorage = () => {
-			const tasksLS = JSON.parse(localStorage.getItem('tasks')) ?? [];
+			const tasksLS = JSON.parse(localStorage.getItem('todoTasks')) ?? [];
 			setTasks(tasksLS);
 		};
 		getLocalStorage();
 	}, []);
 
 	useEffect(() => {
-		localStorage.setItem('tasks', JSON.stringify(tasks));
+		localStorage.setItem('todoTasks', JSON.stringify(tasks));
 	}, [tasks]);
 
 	return (
