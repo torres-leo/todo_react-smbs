@@ -48,10 +48,14 @@ const TodoForm = ({ todoTasks, setTodoTasks, taskElement, setTaskElement }) => {
 		setTask('');
 	};
 
+	const handleChange = (e) => {
+		setTask(e.target.value);
+	};
+
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<input type='text' placeholder='Insert your task' onChange={(e) => setTask(e.target.value)} value={task} />
+				<input type='text' placeholder='Insert your task' onChange={handleChange} value={task} />
 				<Button type='submit'>{taskElement.id ? 'Update Task' : 'Add Task'}</Button>
 				{error && <p>Insert a task, please</p>}
 			</form>

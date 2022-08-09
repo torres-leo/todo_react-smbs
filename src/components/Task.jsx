@@ -1,22 +1,22 @@
 import React from 'react';
 import Button from './Button';
 
-const Task = ({ taskElement, setTaskElement, deleteTask }) => {
-	const { task, id, completed } = taskElement;
+const Task = ({ taskLI, setTaskElement, deleteTask, completedTask }) => {
+	const { task, id, completed } = taskLI;
 
 	const handleDelete = () => {
-		const respuesta = confirm('Do you want to delete this task?');
-		if (respuesta) {
+		const answer = confirm('Do you want to delete this task?');
+		if (answer) {
 			deleteTask(id);
 		}
 	};
 
-	// console.log(element, id);
 	return (
 		<>
 			<li>
+				<input type='checkbox' onChange={() => completedTask(id)} defaultChecked={completed} />
 				{task}
-				<Button type='button' onClick={() => setTaskElement(taskElement)}>
+				<Button type='button' onClick={() => setTaskElement(taskLI)}>
 					Edite
 				</Button>
 				<Button type='button' onClick={handleDelete}>

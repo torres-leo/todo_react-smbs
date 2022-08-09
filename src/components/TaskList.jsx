@@ -1,18 +1,19 @@
 import React from 'react';
 import Task from './Task';
 
-const TaskList = ({ todoTasks, setTaskElement, deleteTask }) => {
+const TaskList = ({ todoTasks, setTaskElement, deleteTask, completedTask }) => {
 	return (
 		<div>
 			<h3>Task List</h3>
 			{todoTasks && todoTasks.length ? (
 				<ul>
-					{todoTasks.map((taskElement) => (
+					{todoTasks.map((taskLI) => (
 						<Task
-							key={taskElement.id}
-							taskElement={taskElement}
+							key={taskLI.id}
+							taskLI={taskLI}
 							setTaskElement={setTaskElement}
 							deleteTask={deleteTask}
+							completedTask={completedTask}
 						/>
 					))}
 				</ul>

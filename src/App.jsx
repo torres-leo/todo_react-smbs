@@ -23,6 +23,16 @@ function App() {
 		setTodoTasks(updateTasks);
 	};
 
+	const completedTask = (id) => {
+		const taskChecked = todoTasks.map((task) => {
+			if (task.id === id) {
+				return { ...task, completed: !task.completed };
+			}
+			return task;
+		});
+		setTodoTasks(taskChecked);
+	};
+
 	return (
 		<>
 			<h2>Todo App | React.js</h2>
@@ -32,7 +42,12 @@ function App() {
 				taskElement={taskElement}
 				setTaskElement={setTaskElement}
 			/>
-			<TaskList todoTasks={todoTasks} setTaskElement={setTaskElement} deleteTask={deleteTask} />
+			<TaskList
+				todoTasks={todoTasks}
+				setTaskElement={setTaskElement}
+				deleteTask={deleteTask}
+				completedTask={completedTask}
+			/>
 		</>
 	);
 }
