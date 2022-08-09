@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import Input from './Input';
 
 const Task = ({ taskLI, setTaskElement, deleteTask, completedTask }) => {
 	const { task, id, completed } = taskLI;
@@ -14,7 +15,7 @@ const Task = ({ taskLI, setTaskElement, deleteTask, completedTask }) => {
 	return (
 		<>
 			<li>
-				<input type='checkbox' onChange={() => completedTask(id)} defaultChecked={completed} />
+				<Input type='checkbox' onChange={() => completedTask(id)} defaultChecked={completed} />
 				{task}
 				<Button type='button' onClick={() => setTaskElement(taskLI)}>
 					Edite

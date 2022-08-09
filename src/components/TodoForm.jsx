@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import Input from './Input';
 import Button from './Button';
 
 const TodoForm = ({ todoTasks, setTodoTasks, taskElement, setTaskElement }) => {
@@ -55,7 +56,7 @@ const TodoForm = ({ todoTasks, setTodoTasks, taskElement, setTaskElement }) => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<input type='text' placeholder='Insert your task' onChange={handleChange} value={task} />
+				<Input type='text' placeholder='Insert your task' onChange={handleChange} value={task} />
 				<Button type='submit'>{taskElement.id ? 'Update Task' : 'Add Task'}</Button>
 				{error && <p>Insert a task, please</p>}
 			</form>
