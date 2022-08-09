@@ -18,7 +18,7 @@ const Task = ({ taskLI, setTaskElement, deleteTask, completedTask }) => {
 				<Input type='checkbox' onChange={() => completedTask(id)} defaultChecked={completed} />
 				{task}
 				<Button type='button' onClick={() => setTaskElement(taskLI)}>
-					Edite
+					Edit
 				</Button>
 				<Button type='button' onClick={handleDelete}>
 					Delete

@@ -3,18 +3,19 @@ import TodoForm from './components/TodoForm';
 import TaskList from './components/TaskList';
 
 function App() {
-	const [todoTasks, setTodoTasks] = useState(JSON.parse(localStorage.getItem('todoTasks')) ?? []);
+	const [todoTasks, setTodoTasks] = useState([]);
 	const [taskElement, setTaskElement] = useState({});
 
-	// useEffect(() => {
-	// 	const getLocalStorage = () => {
-	// 		const tasksLS = JSON.parse(localStorage.getItem('todoTasks')) ?? [];
-	// 		setTodoTasks(tasksLS);
-	// 	};
-	// 	getLocalStorage();
-	// }, []);
+	useEffect(() => {
+		const getLocalStorage = () => {
+			const tasksLS = JSON.parse(localStorage.getItem('todoTasks'));
+			setTodoTasks(tasksLS);
+		};
+		getLocalStorage();
+	}, []);
 
 	useEffect(() => {
+		if (!todoTasks.length) return;
 		localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
 	}, [todoTasks]);
 

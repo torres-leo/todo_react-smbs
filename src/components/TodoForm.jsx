@@ -37,8 +37,10 @@ const TodoForm = ({ todoTasks, setTodoTasks, taskElement, setTaskElement }) => {
 			// EDIT TASK
 			inputValue.id = taskElement.id;
 
-			const updateTask = todoTasks.map((taskState) => (taskState.id === taskElement.id ? inputValue : taskState));
-			setTodoTasks(updateTask);
+			let editingTask = [...todoTasks];
+			const index = editingTask.findIndex((taskState) => taskState.id === taskElement.id);
+			editingTask.splice(index, 1, inputValue);
+			setTodoTasks(editingTask);
 			setTaskElement({});
 		} else {
 			// NEW TASK
