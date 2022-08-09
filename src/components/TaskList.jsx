@@ -1,15 +1,24 @@
 import React from 'react';
 import Task from './Task';
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ todoTasks, setTaskElement, deleteTask }) => {
 	return (
 		<div>
 			<h3>Task List</h3>
-			<ul>
-				{tasks.map((task) => (
-					<Task key={task.id} task={task} />
-				))}
-			</ul>
+			{todoTasks && todoTasks.length ? (
+				<ul>
+					{todoTasks.map((taskElement) => (
+						<Task
+							key={taskElement.id}
+							taskElement={taskElement}
+							setTaskElement={setTaskElement}
+							deleteTask={deleteTask}
+						/>
+					))}
+				</ul>
+			) : (
+				<p>Your tasks will be show here</p>
+			)}
 		</div>
 	);
 };

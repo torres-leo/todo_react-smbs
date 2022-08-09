@@ -1,13 +1,28 @@
 import React from 'react';
 import Button from './Button';
 
-const Task = ({ task }) => {
-	const { task: element, id } = task;
+const Task = ({ taskElement, setTaskElement, deleteTask }) => {
+	const { task, id, completed } = taskElement;
 
-	console.log(element, id);
+	const handleDelete = () => {
+		const respuesta = confirm('Do you want to delete this task?');
+		if (respuesta) {
+			deleteTask(id);
+		}
+	};
+
+	// console.log(element, id);
 	return (
 		<>
-			<li>{element}</li>
+			<li>
+				{task}
+				<Button type='button' onClick={() => setTaskElement(taskElement)}>
+					Edite
+				</Button>
+				<Button type='button' onClick={handleDelete}>
+					Delete
+				</Button>
+			</li>
 		</>
 	);
 };

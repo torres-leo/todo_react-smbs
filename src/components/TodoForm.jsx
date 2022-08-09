@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import Button from './Button';
 
-const TodoForm = ({ tasks, setTasks }) => {
+const TodoForm = ({ todoTasks, setTodoTasks, taskElement, setTaskElement }) => {
 	const [task, setTask] = useState('');
+	const [error, setError] = useState(false);
 
-	const addId = () => {
+	useEffect(() => {
+		if (Object.keys(taskElement).length > 0) {
+			setTask(taskElement.task);
+		}
+	}, [taskElement]);
+
+	const generateId = () => {
 		const random = Math.random().toString(36).substring(2);
 		const fecha = Date.now().toString(36);
 
@@ -15,26 +23,37 @@ const TodoForm = ({ tasks, setTasks }) => {
 		e.preventDefault();
 
 		if (!task) {
-			console.log('No puedes dejar vacio');
+			setError(true);
+			setTimeout(() => {
+				setError(false);
+			}, 4000);
 			return;
 		}
 
-		const inputTask = { task };
-		inputTask.id = addId();
+		const inputValue = { task, completed: false };
 
-		setTasks([...tasks, inputTask]);
+		if (taskElement.id) {
+			// EDIT TASK
+			inputValue.id = taskElement.id;
+
+			const updateTask = todoTasks.map((taskState) => (taskState.id === taskElement.id ? inputValue : taskState));
+			setTodoTasks(updateTask);
+			setTaskElement({});
+		} else {
+			// NEW TASK
+			inputValue.id = generateId();
+			setTodoTasks([...todoTasks, inputValue]);
+		}
+
 		setTask('');
-	};
-
-	const handleAdd = () => {
-		console.log('add');
 	};
 
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
 				<input type='text' placeholder='Insert your task' onChange={(e) => setTask(e.target.value)} value={task} />
-				<Button type='submit'>Add Task</Button>
+				<Button type='submit'>{taskElement.id ? 'Update Task' : 'Add Task'}</Button>
+				{error && <p>Insert a task, please</p>}
 			</form>
 		</div>
 	);
