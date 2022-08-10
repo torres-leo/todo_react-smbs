@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import Button from './Button';
 import Input from './Input';
-import useTodo from '../hooks/useTodo';
+import TodoContext from '../context/TodoProvider';
 
 const Task = ({ taskLI }) => {
-	const { deleteTask, setTaskElement, completedTask } = useTodo();
+	const { deleteTask, setTaskElement, completedTask } = useContext(TodoContext);
 	const { task, id, completed } = taskLI;
 
 	const handleDelete = () => {

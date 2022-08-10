@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import { generateId, setLocalStorage, getLocalStorage } from '../utils/functions';
 
 const TodoContext = createContext();
 
@@ -6,22 +7,10 @@ const TodoProvider = ({ children }) => {
 	const [todoTasks, setTodoTasks] = useState([]);
 	const [taskElement, setTaskElement] = useState({});
 
-	const setLocalStorage = () => {
-		if (!todoTasks.length) return;
-		localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
-	};
-
-	const getLocalStorage = () => {
-		const tasksLS = JSON.parse(localStorage.getItem('todoTasks'));
-		setTodoTasks(tasksLS);
-	};
-
-	const generateId = () => {
-		const random = Math.random().toString(36).substring(2);
-		const fecha = Date.now().toString(36);
-
-		return random + fecha;
-	};
+	useEffect(() => {
+		const items = getLocalStorage('todoTasks');
+		setTodoTasks(items);
+	}, []);
 
 	const addTask = (task) => {
 		if (taskElement.id) {
@@ -32,20 +21,23 @@ const TodoProvider = ({ children }) => {
 			const index = editingTask.findIndex((taskState) => taskState.id === taskElement.id);
 			editingTask.splice(index, 1, task);
 			setTodoTasks(editingTask);
+			setLocalStorage('todoTasks', editingTask);
 			setTaskElement({});
 		} else {
 			// NEW TASK
 			task.id = generateId();
-			setTodoTasks([...todoTasks, task]);
+			const newTask = [...todoTasks, task];
+			setTodoTasks(newTask);
+			setLocalStorage('todoTasks', newTask);
 		}
 	};
 
 	const deleteTask = (id) => {
 		const updateTasks = todoTasks.filter((task) => task.id !== id);
 		setTodoTasks(updateTasks);
+		setLocalStorage('todoTasks', updateTasks);
 	};
 
-	// let checkedTask;
 	const completedTask = (task) => {
 		let checkedTasks = [...todoTasks];
 		const index = checkedTasks.findIndex((taskState) => taskState.id === task.id);
@@ -53,6 +45,7 @@ const TodoProvider = ({ children }) => {
 		checkedTasks.splice(index, 1, { ...item, completed: !item.completed });
 
 		setTodoTasks(checkedTasks);
+		setLocalStorage('todoTasks', checkedTasks);
 	};
 
 	return (
@@ -64,8 +57,6 @@ const TodoProvider = ({ children }) => {
 				deleteTask,
 				taskElement,
 				setTaskElement,
-				setLocalStorage,
-				getLocalStorage,
 				completedTask,
 			}}>
 			{children}

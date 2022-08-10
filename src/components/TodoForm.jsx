@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Input from './Input';
 import Button from './Button';
-import useTodo from '../hooks/useTodo';
+import TodoContext from '../context/TodoProvider';
+import { useCallback } from 'react';
 
 const TodoForm = () => {
-	const { todoTasks, addTask, taskElement, setLocalStorage } = useTodo();
+	const { addTask, taskElement } = useContext(TodoContext);
 	const [task, setTask] = useState('');
 	const [error, setError] = useState(false);
-
-	useEffect(() => {
-		setLocalStorage();
-	}, [todoTasks]);
 
 	useEffect(() => {
 		if (Object.keys(taskElement).length > 0) {
@@ -37,9 +34,12 @@ const TodoForm = () => {
 		setTask('');
 	};
 
-	const handleChange = (e) => {
-		setTask(e.target.value);
-	};
+	const handleChange = useCallback(
+		(e) => {
+			setTask(e.target.value);
+		},
+		[task]
+	);
 
 	return (
 		<div>
