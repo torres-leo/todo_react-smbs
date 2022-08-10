@@ -4,13 +4,11 @@ import TaskList from './components/TaskList';
 
 function App() {
 	return (
-		<>
+		<TodoProvider>
 			<h2>Todo App | React.js</h2>
-			<TodoProvider>
-				<TodoForm />
-				<TaskList />
-			</TodoProvider>
-		</>
+			<TodoForm />
+			<TaskList />
+		</TodoProvider>
 	);
 }
 

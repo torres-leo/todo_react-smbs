@@ -7,7 +7,7 @@ const TaskList = () => {
 
 	const renderList = () => {
 		if (!todoTasks.length) return <p> Your tasks will be show here </p>;
-		return todoTasks?.map((taskLI) => <Task key={taskLI.id} taskLI={taskLI} />);
+		return todoTasks?.map((task) => <Task key={task.id} data={task} />);
 	};
 
 	return (
