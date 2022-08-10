@@ -1,8 +1,11 @@
 import React from 'react';
 import Button from './Button';
 import Input from './Input';
+import useTodo from '../hooks/useTodo';
 
-const Task = ({ taskLI, setTaskElement, deleteTask, completedTask }) => {
+// const Task = ({ taskLI, setTaskElement, deleteTask, completedTask }) => {
+const Task = ({ taskLI }) => {
+	const { deleteTask, setTaskElement } = useTodo();
 	const { task, id, completed } = taskLI;
 
 	const handleDelete = () => {
@@ -15,7 +18,9 @@ const Task = ({ taskLI, setTaskElement, deleteTask, completedTask }) => {
 	return (
 		<>
 			<li>
-				<Input type='checkbox' onChange={() => completedTask(id)} defaultChecked={completed} />
+				{/* <Input type='checkbox' onChange={() => completedTask(id)} defaultChecked={completed} />
+				{task} */}
+				<Input type='checkbox' defaultChecked={completed} />
 				{task}
 				<Button type='button' onClick={() => setTaskElement(taskLI)}>
 					Edit

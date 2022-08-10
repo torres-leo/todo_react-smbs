@@ -20,35 +20,35 @@ function App() {
 		localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
 	}, [todoTasks]);
 
-	const deleteTask = (id) => {
-		const updateTasks = todoTasks.filter((task) => task.id !== id);
-		setTodoTasks(updateTasks);
-	};
+	// const deleteTask = (id) => {
+	// 	const updateTasks = todoTasks.filter((task) => task.id !== id);
+	// 	setTodoTasks(updateTasks);
+	// };
 
-	const completedTask = (id) => {
-		const taskChecked = todoTasks.map((task) => {
-			if (task.id === id) {
-				return { ...task, completed: !task.completed };
-			}
-			return task;
-		});
-		setTodoTasks(taskChecked);
-	};
+	// const completedTask = (id) => {
+	// 	const taskChecked = todoTasks.map((task) => {
+	// 		if (task.id === id) {
+	// 			return { ...task, completed: !task.completed };
+	// 		}
+	// 		return task;
+	// 	});
+	// 	setTodoTasks(taskChecked);
+	// };
 
 	return (
 		<TodoProvider>
 			<h2>Todo App | React.js</h2>
 			<TodoForm
-				todoTasks={todoTasks}
-				setTodoTasks={setTodoTasks}
-				taskElement={taskElement}
-				setTaskElement={setTaskElement}
+			// todoTasks={todoTasks}
+			// setTodoTasks={setTodoTasks}
+			// taskElement={taskElement}
+			// setTaskElement={setTaskElement}
 			/>
 			<TaskList
-				todoTasks={todoTasks}
-				setTaskElement={setTaskElement}
-				deleteTask={deleteTask}
-				completedTask={completedTask}
+			// todoTasks={todoTasks}
+			// setTaskElement={setTaskElement}
+			// deleteTask={deleteTask}
+			// completedTask={completedTask}
 			/>
 		</TodoProvider>
 	);
