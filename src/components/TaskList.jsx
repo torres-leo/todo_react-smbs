@@ -1,22 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Task from './Task';
 import useTodo from '../hooks/useTodo';
 
-// const TaskList = ({ todoTasks, setTaskElement, deleteTask, completedTask }) => {
 const TaskList = () => {
-	const { todoTasks } = useTodo();
+	const { todoTasks, getLocalStorage } = useTodo();
+
+	useEffect(() => {
+		getLocalStorage();
+	}, []);
 
 	const renderList = () => {
 		return todoTasks && todoTasks.length ? (
 			<ul>
 				{todoTasks.map((taskLI) => (
-					<Task
-						key={taskLI.id}
-						taskLI={taskLI}
-						// setTaskElement={setTaskElement}
-						// deleteTask={deleteTask}
-						// completedTask={completedTask}
-					/>
+					<Task key={taskLI.id} taskLI={taskLI} />
 				))}
 			</ul>
 		) : (
