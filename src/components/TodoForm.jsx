@@ -10,8 +10,7 @@ const TodoForm = () => {
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
-		if (Object.keys(taskElement).length > 0) {
-			console.log(taskElement);
+		if (Object.keys(taskElement).length) {
 			setTask(taskElement.task);
 		}
 	}, [taskElement]);
@@ -42,13 +41,11 @@ const TodoForm = () => {
 	);
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<Input type='text' placeholder='Insert your task' onChange={handleChange} value={task} />
-				<Button type='submit'>{taskElement.id ? 'Update Task' : 'Add Task'}</Button>
-				{error && <p>Insert a task, please</p>}
-			</form>
-		</div>
+		<form onSubmit={handleSubmit}>
+			<Input type='text' placeholder='Insert your task' onChange={handleChange} value={task} />
+			<Button type='submit'>{taskElement.id ? 'Update Task' : 'Add Task'}</Button>
+			{error && <p>Insert a task, please</p>}
+		</form>
 	);
 };
 
