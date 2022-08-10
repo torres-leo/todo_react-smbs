@@ -14,8 +14,21 @@ const TodoProvider = ({ children }) => {
 	};
 
 	const addTask = (task) => {
-		task.id = generateId();
-		setTodoTasks([...todoTasks, task]);
+		// let stateElement = [...taskElement];
+		if (taskElement.id) {
+			// EDIT TASK
+			task.id = taskElement.id;
+
+			let editingTask = [...todoTasks];
+			const index = editingTask.findIndex((taskState) => taskState.id === taskElement.id);
+			editingTask.splice(index, 1, inputValue);
+			setTodoTasks(editingTask);
+			setTaskElement({});
+		} else {
+			// NEW TASK
+			task.id = generateId();
+			setTodoTasks([...todoTasks, task]);
+		}
 	};
 
 	const deleteTask = (id) => {
