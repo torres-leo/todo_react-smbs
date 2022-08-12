@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
 import Task from './Task';
-import TodoContext from '../context/TodoProvider';
 
 const TaskList = () => {
-	// const { todoTasks } = useContext(TodoContext);
+	const todos = useSelector((state) => state.todos.todos);
 
 	const renderList = () => {
-		// if (!todoTasks.length) return <p> Your tasks will be show here </p>;
-		// return todoTasks?.map((task) => <Task key={task.id} data={task} />);
+		if (!todos.length) return <p>Your tasks will be show here </p>;
+		return todos?.map((task) => <Task key={task.id} data={task} />);
 	};
 
 	return (
