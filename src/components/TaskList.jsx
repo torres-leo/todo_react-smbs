@@ -3,11 +3,11 @@ import Task from './Task';
 import TodoContext from '../context/TodoProvider';
 
 const TaskList = () => {
-	const { todoTasks } = useContext(TodoContext);
+	// const { todoTasks } = useContext(TodoContext);
 
 	const renderList = () => {
-		if (!todoTasks.length) return <p> Your tasks will be show here </p>;
-		return todoTasks?.map((task) => <Task key={task.id} data={task} />);
+		// if (!todoTasks.length) return <p> Your tasks will be show here </p>;
+		// return todoTasks?.map((task) => <Task key={task.id} data={task} />);
 	};
 
 	return (

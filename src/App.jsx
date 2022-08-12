@@ -1,7 +1,7 @@
-import { TodoProvider } from './context/TodoProvider';
+// import { TodoProvider } from './context/TodoProvider';
 import TodoForm from './components/TodoForm';
 import TaskList from './components/TaskList';
-import { store } from './store';
+import store from './redux/store';
 import { Provider } from 'react-redux';
 
 function App() {
