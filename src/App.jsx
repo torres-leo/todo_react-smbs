@@ -1,14 +1,16 @@
 import { TodoProvider } from './context/TodoProvider';
 import TodoForm from './components/TodoForm';
 import TaskList from './components/TaskList';
+import { store } from './store';
+import { Provider } from 'react-redux';
 
 function App() {
 	return (
-		<TodoProvider>
+		<Provider store={store}>
 			<h2>Todo App | React.js</h2>
 			<TodoForm />
 			<TaskList />
-		</TodoProvider>
+		</Provider>
 	);
 }
 
