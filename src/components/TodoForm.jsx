@@ -41,12 +41,17 @@ const TodoForm = () => {
 	);
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<Input type='text' placeholder='Insert your task' onChange={handleChange} value={task} />
-			{/* <Button type='submit'>{taskElement.id ? 'Update Task' : 'Add Task'}</Button> */}
-			<Button type='submit'>Add Task</Button>
-			{error && <p>Insert a task, please</p>}
-		</form>
+		<>
+			<form className='form' onSubmit={handleSubmit}>
+				<Input type='text' placeholder='Insert your task' onChange={handleChange} value={task} className='input-task' />
+				<Button
+					type='submit'
+					className={`btn add ${Object.keys(todoTask).length && 'bg-yellow-300 hover:bg-yellow-400'}`}>
+					{Object.keys(todoTask).length ? 'Update Task' : 'Add Task'}
+				</Button>
+			</form>
+			{error && <p className='error'>Insert a task, please</p>}
+		</>
 	);
 };
 

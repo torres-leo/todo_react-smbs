@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ type, onClick, children }) => {
+const Button = ({ type, onClick, className, children }) => {
 	return (
-		<button type={type} onClick={onClick}>
+		<button type={type} className={className} onClick={onClick}>
 			{children}
 		</button>
 	);

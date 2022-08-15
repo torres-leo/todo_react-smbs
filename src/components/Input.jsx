@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = ({ type, placeholder, value, onChange, defaultChecked }) => {
+const Input = ({ type, placeholder, value, onChange, defaultChecked, className }) => {
 	const renderInput = (type) => {
 		switch (type) {
 			case 'checkbox':
@@ -14,7 +14,7 @@ const Input = ({ type, placeholder, value, onChange, defaultChecked }) => {
 					/>
 				);
 			default:
-				return <input type='text' placeholder={placeholder} onChange={onChange} value={value} />;
+				return <input type='text' placeholder={placeholder} className={className} onChange={onChange} value={value} />;
 		}
 	};
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import Button from './Button';
 import Input from './Input';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { deleteTask, editTask, completedTask } from '../redux/reducers/todoSlice';
 
 const Task = ({ data }) => {
@@ -23,15 +25,18 @@ const Task = ({ data }) => {
 	};
 
 	return (
-		<li>
+		<li className='task'>
 			<Input type='checkbox' onChange={handleCompleted} defaultChecked={completed} />
-			{task}
-			<Button type='button' onClick={handleEditing}>
-				Edit
-			</Button>
-			<Button type='button' onClick={handleDelete}>
-				Delete
-			</Button>
+			<p className='task-info'>{task}</p>
+			{completed ? <p className='completed'>Completed</p> : <p className='pending'>Pending</p>}
+			<div className='flex gap-2'>
+				<Button type='button' className='btn edit' onClick={handleEditing}>
+					<FontAwesomeIcon icon={faPenToSquare} />
+				</Button>
+				<Button type='button' className='btn delete' onClick={handleDelete}>
+					<FontAwesomeIcon icon={faTrashCan} />
+				</Button>
+			</div>
 		</li>
 	);
 };

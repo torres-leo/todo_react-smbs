@@ -9,9 +9,11 @@ function App() {
 	return (
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
-				<h2>Todo App | React.js</h2>
-				<TodoForm />
-				<TaskList />
+				<h2 className='title'>Todo App | React.js</h2>
+				<div className='mt-10 w-1/2 mx-auto'>
+					<TodoForm />
+					<TaskList />
+				</div>
 			</PersistGate>
 		</Provider>
 	);
