@@ -11,6 +11,7 @@ const Input = ({ type, placeholder, value, onChange, defaultChecked, className }
 						onChange={onChange}
 						checked={value}
 						defaultChecked={defaultChecked}
+						className={className}
 					/>
 				);
 			default:
