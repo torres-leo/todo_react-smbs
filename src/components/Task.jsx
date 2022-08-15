@@ -32,11 +32,11 @@ const Task = ({ data }) => {
 			</div>
 
 			<div className='container-buttons'>
-				{completed ? <p className='completed'>Completed</p> : <p className='pending'>Pending</p>}
-				<Button type='button' className='btn edit' onClick={handleEditing}>
+				{completed && <p className='completed'>Completed</p>}
+				<Button type='button' className='btn edit' onClick={handleEditing} title='Edit task'>
 					<FontAwesomeIcon icon={faPenToSquare} />
 				</Button>
-				<Button type='button' className='btn delete' onClick={handleDelete}>
+				<Button type='button' className='btn delete' onClick={handleDelete} title='Delete task'>
 					<FontAwesomeIcon icon={faTrashCan} />
 				</Button>
 			</div>
