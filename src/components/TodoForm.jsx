@@ -29,7 +29,6 @@ const TodoForm = () => {
 		}
 
 		dispatch(addTask(task));
-
 		setTask('');
 	};
 

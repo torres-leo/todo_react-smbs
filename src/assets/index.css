@@ -43,6 +43,10 @@
 		@apply p-2 bg-red-500/90 text-white text-center font-medium rounded-md uppercase mb-4 w-1/2 block mx-auto;
 	}
 
+	.success {
+		@apply p-2 bg-green-600/90 text-white text-center font-medium rounded-md uppercase mb-4 w-1/2 block mx-auto;
+	}
+
 	.task {
 		@apply flex items-center justify-between border-b-2 py-4 gap-10 last:border-none;
 	}
