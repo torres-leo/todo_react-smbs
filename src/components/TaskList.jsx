@@ -7,7 +7,7 @@ const TaskList = () => {
 	const todos = useSelector((state) => state.todos.todos);
 
 	const renderList = () => {
-		if (!todos.length) return <p>Your tasks will be show here </p>;
+		if (!todos.length) return <p className='text-center uppercase text-sm'>Your tasks will be show here </p>;
 		return todos?.map((task) => <Task key={task.id} data={task} />);
 	};
 

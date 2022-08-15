@@ -26,10 +26,13 @@ const Task = ({ data }) => {
 
 	return (
 		<li className='task'>
-			<Input type='checkbox' onChange={handleCompleted} defaultChecked={completed} />
-			<p className='task-info'>{task}</p>
-			{completed ? <p className='completed'>Completed</p> : <p className='pending'>Pending</p>}
-			<div className='flex gap-2'>
+			<div className='info'>
+				<Input type='checkbox' onChange={handleCompleted} defaultChecked={completed} />
+				<p className={`${completed && 'line-through'}`}>{task}</p>
+			</div>
+
+			<div className='container-buttons'>
+				{completed ? <p className='completed'>Completed</p> : <p className='pending'>Pending</p>}
 				<Button type='button' className='btn edit' onClick={handleEditing}>
 					<FontAwesomeIcon icon={faPenToSquare} />
 				</Button>
