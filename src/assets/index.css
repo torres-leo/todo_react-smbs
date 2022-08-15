@@ -8,11 +8,11 @@
 	}
 
 	.add {
-		@apply bg-lime-500/70 hover:bg-green-600;
+		@apply bg-lime-500/70 hover:bg-lime-600;
 	}
 
 	.edit {
-		@apply px-4 bg-yellow-300/80 text-black/80 hover:bg-yellow-300;
+		@apply px-4 bg-yellow-200 text-black/80 hover:bg-yellow-300;
 	}
 
 	.delete {
