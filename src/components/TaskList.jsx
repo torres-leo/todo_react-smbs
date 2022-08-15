@@ -12,7 +12,7 @@ const TaskList = () => {
 	};
 
 	return (
-		<div className=''>
+		<div>
 			<h3 className='title-task'>Task List</h3>
 			<ul className='containerTask'>{renderList()}</ul>
 		</div>
