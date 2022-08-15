@@ -4,11 +4,11 @@
 
 @layer components {
 	.btn {
-		@apply p-2 rounded-md border;
+		@apply p-2 rounded-md;
 	}
 
 	.add {
-		@apply bg-green-400 hover:bg-green-500;
+		@apply bg-lime-500/70 hover:bg-green-600;
 	}
 
 	.edit {
